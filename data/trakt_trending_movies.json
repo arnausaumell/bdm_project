@@ -1,0 +1,132 @@
+[
+    {
+        "watchers": 3487,
+        "movie": {
+            "title": "The Electric State",
+            "year": 2025,
+            "ids": {
+                "trakt": 614652,
+                "slug": "the-electric-state-2025",
+                "imdb": "tt7766378",
+                "tmdb": 777443
+            }
+        }
+    },
+    {
+        "watchers": 1545,
+        "movie": {
+            "title": "Captain America: Brave New World",
+            "year": 2025,
+            "ids": {
+                "trakt": 655031,
+                "slug": "captain-america-brave-new-world-2025",
+                "imdb": "tt14513804",
+                "tmdb": 822119
+            }
+        }
+    },
+    {
+        "watchers": 989,
+        "movie": {
+            "title": "The Gorge",
+            "year": 2025,
+            "ids": {
+                "trakt": 763780,
+                "slug": "the-gorge-2025",
+                "imdb": "tt13654226",
+                "tmdb": 950396
+            }
+        }
+    },
+    {
+        "watchers": 821,
+        "movie": {
+            "title": "Anora",
+            "year": 2024,
+            "ids": {
+                "trakt": 856080,
+                "slug": "anora-2024",
+                "imdb": "tt28607951",
+                "tmdb": 1064213
+            }
+        }
+    },
+    {
+        "watchers": 770,
+        "movie": {
+            "title": "Moana 2",
+            "year": 2024,
+            "ids": {
+                "trakt": 1005024,
+                "slug": "moana-2-2024",
+                "imdb": "tt13622970",
+                "tmdb": 1241982
+            }
+        }
+    },
+    {
+        "watchers": 740,
+        "movie": {
+            "title": "Companion",
+            "year": 2025,
+            "ids": {
+                "trakt": 871757,
+                "slug": "companion-2025",
+                "imdb": "tt26584495",
+                "tmdb": 1084199
+            }
+        }
+    },
+    {
+        "watchers": 655,
+        "movie": {
+            "title": "Mickey 17",
+            "year": 2025,
+            "ids": {
+                "trakt": 540151,
+                "slug": "mickey-17-2025",
+                "imdb": "tt12299608",
+                "tmdb": 696506
+            }
+        }
+    },
+    {
+        "watchers": 555,
+        "movie": {
+            "title": "Fight or Flight",
+            "year": 2025,
+            "ids": {
+                "trakt": 977993,
+                "slug": "fight-or-flight-2025",
+                "imdb": "tt13652286",
+                "tmdb": 1212855
+            }
+        }
+    },
+    {
+        "watchers": 550,
+        "movie": {
+            "title": "High Rollers",
+            "year": 2025,
+            "ids": {
+                "trakt": 925691,
+                "slug": "high-rollers-2025",
+                "imdb": "tt27829510",
+                "tmdb": 1149167
+            }
+        }
+    },
+    {
+        "watchers": 515,
+        "movie": {
+            "title": "The Parenting",
+            "year": 2025,
+            "ids": {
+                "trakt": 763522,
+                "slug": "the-parenting-2025",
+                "imdb": "tt14041896",
+                "tmdb": 850920
+            }
+        }
+    }
+]
