@@ -8,7 +8,6 @@ import asyncio
 from prefect import flow, task
 from loguru import logger
 
-from utils.prefect_manager import PrefectManager
 from core.data_ingestion.tmdb_connector import TMDbConnector
 from core.data_ingestion.trakt_connector import TraktConnector
 from core.data_ingestion.omdb_connector import OMDBConnector
