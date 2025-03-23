@@ -188,30 +188,20 @@ def update_movie_data(
         delta_lake_manager=delta_lake_manager,
     )
 
-    # # Show tables
-    # delta_lake_manager.show_table(table_path="landing_zone/tmdb/movies_released")
-    # delta_lake_manager.show_table(table_path="landing_zone/trakt/movie_ids_and_trailer")
-    # delta_lake_manager.show_table(table_path="landing_zone/omdb/movie_ratings")
-    # delta_lake_manager.show_table(table_path="landing_zone/tmdb/movies_providers")
-    # delta_lake_manager.show_table(table_path="landing_zone/youtube/trailer_video_stats")
-
-
-async def create_deployments():
-    manager = PrefectManager(work_pool_name="bdm-movies-db-workpool")
-
-    # Create deployment for the main flow
-    await manager.create_deployment(
-        flow_func=update_movie_data,
-        deployment_name="dep-test",
-        cron="* * * * *",  # Run daily at midnight
-        description="Daily job to pull new movie releases and update movie data from various sources",
-    )
+    # Show tables
+    delta_lake_manager.show_table(table_path="landing_zone/tmdb/movies_released")
+    delta_lake_manager.show_table(table_path="landing_zone/trakt/movie_ids_and_trailer")
+    delta_lake_manager.show_table(table_path="landing_zone/omdb/movie_ratings")
+    delta_lake_manager.show_table(table_path="landing_zone/tmdb/movies_providers")
+    delta_lake_manager.show_table(table_path="landing_zone/youtube/trailer_video_stats")
 
 
 if __name__ == "__main__":
-    # asyncio.run(create_deployments())
-    update_movie_data.deploy(
-        name="dep-test2",
+    flow.from_source(
+        source="https://github.com/arnausaumell/bdm_project.git",
+        entrypoint="core/landing_zone/load_tables.py:update_movie_data",
+    ).deploy(
+        name="update-movie-data",
         work_pool_name="bdm-movies-db-workpool",
         cron="* * * * *",  # Run daily at midnight
         description="Daily job to pull new movie releases and update movie data from various sources",
