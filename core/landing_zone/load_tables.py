@@ -4,7 +4,6 @@ import sys
 sys.path.append(os.getcwd())
 
 from datetime import datetime, timedelta
-import asyncio
 from prefect import flow, task
 from loguru import logger
 
