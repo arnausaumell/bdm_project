@@ -2,8 +2,8 @@ from prefect import flow
 
 
 @flow
-def my_flow(name):
-    print(f"hello {name}")
+def my_flow():
+    print(f"hello Carla")
 
 
 if __name__ == "__main__":
