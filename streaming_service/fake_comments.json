@@ -1,0 +1,92 @@
+[
+  {
+    "film_id": "film3",
+    "film_title": "Interstellar",
+    "comment_id": "sim_1742665453.587628",
+    "comment_text": "This movie is absolutely terrible! Don't waste your money!",
+    "is_fake": true,
+    "detected_at": "2025-03-22T18:44:13.587668",
+    "confidence_score": 0.77
+  },
+  {
+    "film_id": "film1",
+    "film_title": "The Matrix",
+    "comment_id": "sim_1742665793.262753",
+    "comment_text": "Just bought 10 copies of this movie! So good!",
+    "is_fake": true,
+    "detected_at": "2025-03-22T18:49:53.262790",
+    "confidence_score": 0.94
+  },
+  {
+    "film_id": "film1",
+    "film_title": "The Matrix",
+    "comment_id": "sim_1742665808.299223",
+    "comment_text": "Worst movie in history. The director should quit.",
+    "is_fake": true,
+    "detected_at": "2025-03-22T18:50:08.299262",
+    "confidence_score": 0.76
+  },
+  {
+    "film_id": "film2",
+    "film_title": "Inception",
+    "comment_id": "sim_1742665823.339921",
+    "comment_text": "I can't believe how amazing this was! Life-changing!!!",
+    "is_fake": true,
+    "detected_at": "2025-03-22T18:50:23.339946",
+    "confidence_score": 0.87
+  },
+  {
+    "film_id": "film1",
+    "film_title": "The Matrix",
+    "comment_id": "sim_1742665838.378851",
+    "comment_text": "Worst movie in history. The director should quit.",
+    "is_fake": true,
+    "detected_at": "2025-03-22T18:50:38.378872",
+    "confidence_score": 0.79
+  },
+  {
+    "film_id": "film2",
+    "film_title": "Inception",
+    "comment_id": "sim_1742666184.490559",
+    "comment_text": "Worst movie in history. The director should quit.",
+    "is_fake": true,
+    "detected_at": "2025-03-22T18:56:24.490596",
+    "confidence_score": 0.85
+  },
+  {
+    "film_id": "film2",
+    "film_title": "Inception",
+    "comment_id": "sim_1742666184.490559",
+    "comment_text": "Worst movie in history. The director should quit.",
+    "is_fake": true,
+    "detected_at": "2025-03-22T18:56:24.490596",
+    "confidence_score": 0.85
+  },
+  {
+    "film_id": "film2",
+    "film_title": "Inception",
+    "comment_id": "sim_1742666184.490559",
+    "comment_text": "Worst movie in history. The director should quit.",
+    "is_fake": true,
+    "detected_at": "2025-03-22T18:56:24.490596",
+    "confidence_score": 0.85
+  },
+  {
+    "film_id": "film2",
+    "film_title": "Inception",
+    "comment_id": "sim_1742666184.490559",
+    "comment_text": "Worst movie in history. The director should quit.",
+    "is_fake": true,
+    "detected_at": "2025-03-22T18:56:24.490596",
+    "confidence_score": 0.85
+  },
+  {
+    "film_id": "film2",
+    "film_title": "Inception",
+    "comment_id": "sim_1742666184.490559",
+    "comment_text": "Worst movie in history. The director should quit.",
+    "is_fake": true,
+    "detected_at": "2025-03-22T18:56:24.490596",
+    "confidence_score": 0.85
+  }
+]

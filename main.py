@@ -28,20 +28,20 @@ movies = tmdb_connector.get_movies_by_date_range(
 save_to_json(movies, "data/movies_tmdb_released.json")
 
 
-# TRAKT
-# Get Trakt movie
-trakt_movies = trakt_connector.get_trending_movies()
-save_to_json(trakt_movies, "data/trakt_trending_movies.json")
-trakt_movie = trakt_connector.get_movie_details(
-    trakt_movies[0]["movie"]["ids"]["trakt"]
-)
-save_to_json(trakt_movie, "data/trakt_movie_details.json")
+# # TRAKT
+# # Get Trakt movie
+# trakt_movies = trakt_connector.get_trending_movies()
+# save_to_json(trakt_movies, "data/trakt_trending_movies.json")
+# trakt_movie = trakt_connector.get_movie_details(
+#     trakt_movies[0]["movie"]["ids"]["trakt"]
+# )
+# save_to_json(trakt_movie, "data/trakt_movie_details.json")
 
-# YOUTUBE
-# Get YouTube reviews
-yt_url = trakt_movie["trailer"]
-yt_video_id = yt_url.split("v=")[1]
-reviews = youtube_connector.get_video_statistics(video_id=yt_video_id)
-comments = youtube_connector.get_video_comments(video_id=yt_video_id)
-save_to_json(reviews, "data/youtube_reviews.json")
-save_to_json(comments, "data/youtube_comments.json")
+# # YOUTUBE
+# # Get YouTube reviews
+# yt_url = trakt_movie["trailer"]
+# yt_video_id = yt_url.split("v=")[1]
+# reviews = youtube_connector.get_video_statistics(video_id=yt_video_id)
+# comments = youtube_connector.get_video_comments(video_id=yt_video_id)
+# save_to_json(reviews, "data/youtube_reviews.json")
+# save_to_json(comments, "data/youtube_comments.json")

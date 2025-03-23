@@ -68,3 +68,21 @@
 - Twitter Comments
   - ???
 ...
+
+
+### Landing Zone
+
+Structure of files in landing zone:
+
+- landing_zone/
+    - tmdb/
+        - movies_released.delta
+        - movies_providers.delta
+    - trakt/
+        - movie_ids_and_trailer.delta
+    - omdb/
+        - movie_ratings.delta
+    - youtube/
+        - trailer_video_stats.delta
+    - blog/
+        - movie_blog_comments.delta

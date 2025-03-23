@@ -1,2 +1,4 @@
 # .env
 venv/
+tmp/
+blog_comments_service/venv/
