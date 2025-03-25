@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   zookeeper:
@@ -10,7 +10,7 @@ services:
     ports:
       - "2181:2181"
     networks:
-      - kafka_network
+      - kafka_net
 
   kafka:
     image: confluentinc/cp-kafka:latest
@@ -22,30 +22,50 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_INTERNAL://kafka:29092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
-      - kafka_network
+      - kafka_net
 
   app:
-    build: .
-    container_name: fastapi_kafka_app
+    build:
+      context: ./app
+    container_name: fastapi_app
     depends_on:
       - kafka
+    ports:
+      - "8001:8001"
     environment:
       KAFKA_BOOTSTRAP_SERVERS: kafka:9092
       KAFKA_TOPIC: comments
-    ports:
-      - "8001:8001"
-    networks:
-      - kafka_network
     volumes:
-      - .:/app
-    command: [ "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8001", "--reload" ]
+      - ./data:/app/data
+    networks:
+      - kafka_net
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001", "--reload"]
+
+  consumer:
+    build:
+      context: ./consumer
+    container_name: kafka_consumer
+    depends_on:
+      - kafka
+    volumes:
+      - ./data:/app/data
+    networks:
+      - kafka_net
+    command: ["python", "kafka_consumer.py"]
+
+  kafka-client:
+    image: confluentinc/cp-kafkacat:latest
+    container_name: kafka_client
+    entrypoint: ["tail", "-f", "/dev/null"]
+    networks:
+      - kafka_net
 
 networks:
-  kafka_network:
+  kafka_net:
     driver: bridge

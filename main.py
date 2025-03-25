@@ -1,3 +1,13 @@
+import sys
+import os
+
+# Añade la carpeta 'core' al sys.path para que se encuentren los módulos
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CORE_DIR = os.path.join(BASE_DIR, "core")
+sys.path.append(CORE_DIR)
+
+
+
 import pandas as pd
 import json
 from datetime import datetime, timedelta

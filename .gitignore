@@ -1,4 +1,17 @@
-# .env
-venv/
-tmp/
-blog_comments_service/venv/
+# Bytecode
+__pycache__/
+*.pyc
+
+# Config
+.env
+*.log
+
+# Data outputs
+data/*.json
+!data/consolidated_comments.json
+
+# VS Code
+.vscode/
+
+# Docker
+*.pid
