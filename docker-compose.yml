@@ -77,6 +77,101 @@ services:
     networks:
       - kafka_net
 
+  batch_ingestion:
+    build:
+      context: .
+      dockerfile: core/landing_zone/batch_ingestion/Dockerfile
+    container_name: batch_ingestion
+    networks:
+      - kafka_net
+    volumes:
+      - ./data:/app/data
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - TMDB_API_KEY=${TMDB_API_KEY}
+      - TRAKT_CLIENT_ID=${TRAKT_CLIENT_ID}
+      - TRAKT_CLIENT_SECRET=${TRAKT_CLIENT_SECRET}
+      - OMDB_API_KEY=${OMDB_API_KEY}
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+
+  airflow-webserver:
+    image: apache/airflow:2.7.3
+    depends_on:
+      - airflow-init
+    environment:
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__WEBSERVER__SECRET_KEY=${AIRFLOW_SECRET_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - TMDB_API_KEY=${TMDB_API_KEY}
+      - TRAKT_CLIENT_ID=${TRAKT_CLIENT_ID}
+      - TRAKT_CLIENT_SECRET=${TRAKT_CLIENT_SECRET}
+      - OMDB_API_KEY=${OMDB_API_KEY}
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+    volumes:
+      - ./core/landing_zone/batch_ingestion/dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8080:8080"
+    command: webserver
+    healthcheck:
+      test: [ "CMD", "curl", "--fail", "http://localhost:8080/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - kafka_net
+
+  airflow-scheduler:
+    image: apache/airflow:2.7.3
+    depends_on:
+      - airflow-webserver
+    environment:
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - TMDB_API_KEY=${TMDB_API_KEY}
+      - TRAKT_CLIENT_ID=${TRAKT_CLIENT_ID}
+      - TRAKT_CLIENT_SECRET=${TRAKT_CLIENT_SECRET}
+      - OMDB_API_KEY=${OMDB_API_KEY}
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+    volumes:
+      - ./core/landing_zone/batch_ingestion/dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: scheduler
+    networks:
+      - kafka_net
+
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    networks:
+      - kafka_net
+
+  airflow-init:
+    image: apache/airflow:2.7.3
+    depends_on:
+      - postgres
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    command: version
+    networks:
+      - kafka_net
+
 networks:
   kafka_net:
     driver: bridge
