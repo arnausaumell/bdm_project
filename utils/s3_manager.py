@@ -90,7 +90,10 @@ class S3Manager:
         try:
             self.s3_client.head_object(Bucket=self.bucket_name, Key=s3_key)
             return True
-        except ClientError:
+        except ClientError as e:
+            if e.response["Error"]["Code"] == "404":
+                return False
+            self.logger.error(f"Error checking if file exists: {e}")
             return False
 
     def get_file_url(self, s3_key: str, expiration: int = 3600) -> Optional[str]:
@@ -115,12 +118,33 @@ class S3Manager:
             self.logger.error(f"Failed to generate presigned URL: {e}")
             return None
 
+    def folder_exists(self, folder_path: str) -> bool:
+        """
+        Check if a folder exists in S3 bucket.
+        Note: In S3, folders are virtual and exist only as prefixes to objects.
+
+        Args:
+            folder_path (str): Path of the folder in S3 (with or without trailing slash)
+
+        Returns:
+            bool: True if folder exists (has at least one object with this prefix), False otherwise
+        """
+        # Ensure the folder path ends with a slash
+        folder_path = folder_path.rstrip("/") + "/"
+
+        try:
+            # List objects with the specified prefix, limiting to 1 result
+            response = self.s3_client.list_objects_v2(
+                Bucket=self.bucket_name, Prefix=folder_path, MaxKeys=1
+            )
+            # If there are any contents, the folder exists
+            return "Contents" in response
+        except ClientError as e:
+            self.logger.error(f"Error checking if folder exists: {e}")
+            return False
+
 
 if __name__ == "__main__":
     BUCKET_NAME = "bdm-movies-db"
     s3 = S3Manager(BUCKET_NAME)
-    s3.upload_file(
-        "data/test.json",
-        "data/test.json",
-    )
-    s3.download_file("test.json", "data/test.json")
+    print(s3.folder_exists("stream/blog_comments"))
