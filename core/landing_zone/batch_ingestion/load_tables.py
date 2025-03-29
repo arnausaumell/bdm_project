@@ -4,7 +4,8 @@ import sys
 sys.path.append(os.getcwd())
 
 from datetime import datetime, timedelta
-from prefect import flow, task
+from airflow import DAG
+from airflow.operators.python import PythonOperator
 from loguru import logger
 
 from core.data_ingestion.tmdb_connector import TMDbConnector
@@ -78,7 +79,6 @@ def update_movie_ratings(
     )
 
 
-@task
 def update_providers(
     all_movies: list[dict],
     tmdb_connector: TMDbConnector,
@@ -101,7 +101,6 @@ def update_providers(
     )
 
 
-@task
 def update_youtube_stats(
     all_movies: list[dict],
     youtube_connector: YouTubeConnector,
@@ -134,11 +133,8 @@ def update_youtube_stats(
     )
 
 
-@flow(name="Update Movie Data")
-def update_movie_data(
-    n_days_ago: int = N_DAYS_AGO,
-):
-    """Main flow to update movie data"""
+def update_movie_data(n_days_ago: int = N_DAYS_AGO, **context):
+    """Main function to update movie data"""
     # Initialize connectors
     tmdb_connector = TMDbConnector(region=REGION)
     trakt_connector = TraktConnector()
@@ -189,3 +185,31 @@ def update_movie_data(
     delta_lake_manager.show_table(table_path="omdb/movie_ratings")
     delta_lake_manager.show_table(table_path="tmdb/movies_providers")
     delta_lake_manager.show_table(table_path="youtube/trailer_video_stats")
+
+
+# Define the DAG
+default_args = {
+    "owner": "airflow",
+    "depends_on_past": False,
+    "start_date": datetime(2024, 1, 1),
+    "email_on_failure": False,
+    "email_on_retry": False,
+    "retries": 1,
+    "retry_delay": timedelta(minutes=5),
+}
+
+dag = DAG(
+    "movie_data_update",
+    default_args=default_args,
+    description="DAG to update movie data from various sources",
+    schedule_interval="0 0 * * *",  # Run daily at midnight
+    catchup=False,
+)
+
+# Create the task
+update_movie_data_task = PythonOperator(
+    task_id="update_movie_data",
+    python_callable=update_movie_data,
+    op_kwargs={"n_days_ago": N_DAYS_AGO},
+    dag=dag,
+)
