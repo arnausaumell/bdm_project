@@ -73,7 +73,7 @@ class DeltaLakeManager:
         """
         s3_path = f"s3a://{self.s3_manager.bucket_name}/{table_path}"
 
-        if not self.s3_manager.file_exists(table_path):
+        if not self.s3_manager.folder_exists(table_path):
             logger.info(f"Table does not exist at {s3_path}. Creating new table.")
             self.create_table(data, table_path)
         else:
@@ -105,7 +105,9 @@ class DeltaLakeManager:
             table_path: S3 path to the Delta Lake table
         """
         s3_path = f"s3a://{self.s3_manager.bucket_name}/{table_path}"
-        self.spark.read.format("delta").load(s3_path).show()
+        table = self.spark.read.format("delta").load(s3_path)
+        logger.info(f"Showing table from {table_path}. Records: {table.count()}")
+        table.show()
 
     def delete_table(self, table_path: str) -> None:
         """
@@ -154,3 +156,4 @@ if __name__ == "__main__":
     delta_manager.show_table(TABLE_PATH)
 
     print(delta_manager.read_table(TABLE_PATH))
+    print(type(delta_manager.read_table(TABLE_PATH)))
