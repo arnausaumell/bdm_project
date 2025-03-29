@@ -6,4 +6,4 @@ COPY . .
 
 RUN pip install kafka-python loguru
 
-CMD ["python", "kafka_consumer.py"]
+CMD ["python3", "kafka_consumer.py"]

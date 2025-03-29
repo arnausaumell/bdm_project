@@ -30,10 +30,10 @@ services:
     networks:
       - kafka_net
 
-  app:
+  producer:
     build:
-      context: ./app
-    container_name: fastapi_app
+      context: ./producer
+    container_name: kafka_producer
     depends_on:
       - kafka
     ports:
@@ -45,7 +45,7 @@ services:
       - ./data:/app/data
     networks:
       - kafka_net
-    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001", "--reload"]
+    command: [ "python3", "kafka_producer.py" ]
 
   consumer:
     build:
@@ -57,12 +57,12 @@ services:
       - ./data:/app/data
     networks:
       - kafka_net
-    command: ["python", "kafka_consumer.py"]
+    command: [ "python3", "kafka_consumer.py" ]
 
   kafka-client:
     image: confluentinc/cp-kafkacat:latest
     container_name: kafka_client
-    entrypoint: ["tail", "-f", "/dev/null"]
+    entrypoint: [ "tail", "-f", "/dev/null" ]
     networks:
       - kafka_net
 

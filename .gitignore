@@ -17,4 +17,4 @@ data/*.json
 *.pid
 
 # Env
-venv
+venv/
