@@ -18646,5 +18646,853 @@
     "is_fake": true,
     "detected_at": "2025-03-26T14:46:27.733019",
     "confidence_score": 0.5
+  },
+  {
+    "comment_id": "6ddc1c83-064a-48d8-95eb-7ef763c60360",
+    "film_title": "Finding Nemo",
+    "comment_text": "Cultural impact is undeniable.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:03.299666",
+    "confidence_score": 0.76
+  },
+  {
+    "comment_id": "63480764-c85b-48fe-86fc-ed49b320e885",
+    "film_title": "Fight Club",
+    "comment_text": "Perfect Sunday night movie.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:05.355688",
+    "confidence_score": 0.83
+  },
+  {
+    "comment_id": "0cde9805-def0-4b33-8ec7-56629eb07b80",
+    "film_title": "Avengers: Endgame",
+    "comment_text": "The sequel was better.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:07.375894",
+    "confidence_score": 0.64
+  },
+  {
+    "comment_id": "5c31c024-198d-4b55-86b3-e7edf7e349a8",
+    "film_title": "The Batman",
+    "comment_text": "Wouldn't watch it again.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:09.385918",
+    "confidence_score": 0.83
+  },
+  {
+    "comment_id": "e585d190-5b7f-4edc-86fb-1f6594dfd578",
+    "film_title": "Frozen",
+    "comment_text": "Worst movie ever made.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:11.393161",
+    "confidence_score": 0.83
+  },
+  {
+    "comment_id": "ad457587-88c2-4834-abe7-7939296460fb",
+    "film_title": "No Time to Die",
+    "comment_text": "Cultural impact is undeniable.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:13.408501",
+    "confidence_score": 0.53
+  },
+  {
+    "comment_id": "1c57f941-b078-4492-bc4a-99ee9c3bf776",
+    "film_title": "Forrest Gump",
+    "comment_text": "Overrated and boring.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:15.428276",
+    "confidence_score": 0.65
+  },
+  {
+    "comment_id": "754bb905-7f03-480b-a5b3-ebdf47c96bac",
+    "film_title": "Encanto",
+    "comment_text": "Great twist at the end!",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:17.448599",
+    "confidence_score": 0.57
+  },
+  {
+    "comment_id": "8dd7731f-5a7f-4097-b7f9-76d29d8b9518",
+    "film_title": "Doctor Strange",
+    "comment_text": "Loved the character development.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:19.462362",
+    "confidence_score": 0.85
+  },
+  {
+    "comment_id": "f787930c-34df-4920-b263-c2d99af9c9bc",
+    "film_title": "Avengers: Endgame",
+    "comment_text": "Plot holes everywhere!",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:21.473864",
+    "confidence_score": 0.82
+  },
+  {
+    "comment_id": "71ae7b6d-28e2-4d7c-af30-4a4b3037d602",
+    "film_title": "Titanic",
+    "comment_text": "10/10 would recommend to a friend.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:23.493234",
+    "confidence_score": 0.52
+  },
+  {
+    "comment_id": "f5d950ee-b461-4425-9fa3-b2f4c0f4e255",
+    "film_title": "Soul",
+    "comment_text": "Fun for the whole family.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:25.511572",
+    "confidence_score": 0.6
+  },
+  {
+    "comment_id": "3e4e8d53-65ed-46b4-95a4-9fe83d1d64c6",
+    "film_title": "Encanto",
+    "comment_text": "Beautiful visuals, bad story.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:27.533540",
+    "confidence_score": 0.78
+  },
+  {
+    "comment_id": "a55a36ea-843a-4c69-ad58-a599cbd14c1a",
+    "film_title": "WALL-E",
+    "comment_text": "Fun for the whole family.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:29.544678",
+    "confidence_score": 0.97
+  },
+  {
+    "comment_id": "ee09cb76-1e80-4c94-a4ce-0d3e41edcf78",
+    "film_title": "Spider-Man: No Way Home",
+    "comment_text": "Surprised me in the best way.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:31.556859",
+    "confidence_score": 0.87
+  },
+  {
+    "comment_id": "f7864500-7c62-42c9-8181-b8078edd28d9",
+    "film_title": "The Godfather",
+    "comment_text": "Left me speechless.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:33.572330",
+    "confidence_score": 0.79
+  },
+  {
+    "comment_id": "f8f043a7-b0bc-445e-a502-b432b474fb6d",
+    "film_title": "The Social Network",
+    "comment_text": "Not for everyone.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:35.592049",
+    "confidence_score": 0.54
+  },
+  {
+    "comment_id": "e7779e96-3752-48b2-9612-1ee971540978",
+    "film_title": "Parasite",
+    "comment_text": "Exceeded my expectations.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:37.615460",
+    "confidence_score": 0.87
+  },
+  {
+    "comment_id": "ae115548-826a-45ad-b9c6-bfa49bb7e0ab",
+    "film_title": "Moana",
+    "comment_text": "Felt like a rollercoaster.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:39.626693",
+    "confidence_score": 0.97
+  },
+  {
+    "comment_id": "9cea6de4-ebfb-449f-b775-a90f3c174318",
+    "film_title": "The Social Network",
+    "comment_text": "Worst ending I've ever seen.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:41.644652",
+    "confidence_score": 0.53
+  },
+  {
+    "comment_id": "fa965ba8-f087-4b5f-af70-383d518c7a7f",
+    "film_title": "Titanic",
+    "comment_text": "Loved the character development.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:43.662806",
+    "confidence_score": 0.8
+  },
+  {
+    "comment_id": "dbb3c788-3905-4235-8646-3cbd34537dd4",
+    "film_title": "WALL-E",
+    "comment_text": "Overrated and boring.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:45.679816",
+    "confidence_score": 0.93
+  },
+  {
+    "comment_id": "a0a77d5e-1ba3-4e0f-9ee6-6be07ae11803",
+    "film_title": "Frozen",
+    "comment_text": "Brilliant cinematography.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:47.695894",
+    "confidence_score": 0.85
+  },
+  {
+    "comment_id": "25c0d661-44d7-46e9-b1b1-ca38f2900028",
+    "film_title": "Whiplash",
+    "comment_text": "Perfect Sunday night movie.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:49.709339",
+    "confidence_score": 0.7
+  },
+  {
+    "comment_id": "05ee331b-06cb-42ab-b060-047037062d1b",
+    "film_title": "Mad Max: Fury Road",
+    "comment_text": "Too much CGI ruined it.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:51.722073",
+    "confidence_score": 0.53
+  },
+  {
+    "comment_id": "86b3cf1e-dae9-42f0-97db-d9cfafe321c2",
+    "film_title": "Avatar",
+    "comment_text": "I expected more from this cast.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:53.741096",
+    "confidence_score": 0.63
+  },
+  {
+    "comment_id": "6f900fef-b8ce-4ded-aa8d-b6602acb71b6",
+    "film_title": "Joker",
+    "comment_text": "Too much CGI ruined it.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:55.758581",
+    "confidence_score": 0.78
+  },
+  {
+    "comment_id": "b8004c2c-8dda-40ad-a0f8-bef8b440c2ae",
+    "film_title": "Forrest Gump",
+    "comment_text": "Plot holes everywhere!",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:13:57.781685",
+    "confidence_score": 0.88
+  },
+  {
+    "comment_id": "19d818b8-7cd0-4ad1-b6b7-6aa5c5e3e463",
+    "film_title": "The Prestige",
+    "comment_text": "I fell asleep halfway through.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:13:59.795854",
+    "confidence_score": 0.79
+  },
+  {
+    "comment_id": "fff461e2-ee53-4e27-8a7f-12cb0c98730a",
+    "film_title": "Whiplash",
+    "comment_text": "Boring and predictable.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:01.815569",
+    "confidence_score": 0.67
+  },
+  {
+    "comment_id": "779a9e07-8212-44f4-b65f-a3a337ad876e",
+    "film_title": "Cars",
+    "comment_text": "Didn't live up to the hype.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:03.840664",
+    "confidence_score": 0.71
+  },
+  {
+    "comment_id": "17b4facf-0117-42e6-95da-0b4a6170deb7",
+    "film_title": "The Batman",
+    "comment_text": "Completely forgettable.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:05.860587",
+    "confidence_score": 0.9
+  },
+  {
+    "comment_id": "26781154-d6cf-4193-ab11-bf10732fdc8d",
+    "film_title": "Shrek",
+    "comment_text": "Will definitely watch again.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:07.877806",
+    "confidence_score": 0.85
+  },
+  {
+    "comment_id": "bb28c71f-e1e9-48c8-9bba-a1712eb9124c",
+    "film_title": "Frozen",
+    "comment_text": "I expected more from this cast.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:09.904429",
+    "confidence_score": 0.93
+  },
+  {
+    "comment_id": "3f589dd6-feb7-494e-8dff-cffea7b2e73e",
+    "film_title": "Luca",
+    "comment_text": "Left me speechless.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:11.924392",
+    "confidence_score": 0.79
+  },
+  {
+    "comment_id": "f965bf26-ef38-4899-8f13-f599c2d0f9a3",
+    "film_title": "Joker",
+    "comment_text": "Plot holes everywhere!",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:13.937089",
+    "confidence_score": 0.89
+  },
+  {
+    "comment_id": "f29584ab-baf1-4bd4-b396-ae64335e594d",
+    "film_title": "The Shawshank Redemption",
+    "comment_text": "Impressive world-building.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:15.953398",
+    "confidence_score": 0.99
+  },
+  {
+    "comment_id": "08790f5e-f21e-442a-9d6b-95d45a36d01d",
+    "film_title": "Frozen",
+    "comment_text": "Plot holes everywhere!",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:17.960451",
+    "confidence_score": 0.63
+  },
+  {
+    "comment_id": "aa839598-d934-47bb-a6d8-c1c8ead4597a",
+    "film_title": "Spider-Man: No Way Home",
+    "comment_text": "The soundtrack was amazing.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:19.973188",
+    "confidence_score": 0.56
+  },
+  {
+    "comment_id": "0df8e8f7-94fc-4519-9f2c-cdf9e66c15ab",
+    "film_title": "Barbie",
+    "comment_text": "Overrated and boring.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:21.992093",
+    "confidence_score": 0.86
+  },
+  {
+    "comment_id": "bac03b6d-fcdb-4270-af51-fe71072d589e",
+    "film_title": "Spider-Man: No Way Home",
+    "comment_text": "Beautiful visuals, bad story.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:24.010524",
+    "confidence_score": 0.95
+  },
+  {
+    "comment_id": "55352417-751b-43dc-af30-2b68b5dc13ff",
+    "film_title": "Turning Red",
+    "comment_text": "Underrated gem!",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:26.028646",
+    "confidence_score": 0.96
+  },
+  {
+    "comment_id": "5fa824f1-1c62-4b09-99ed-37ca441f2e60",
+    "film_title": "Dune",
+    "comment_text": "Not for everyone.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:28.048702",
+    "confidence_score": 0.59
+  },
+  {
+    "comment_id": "9008ffa4-f79b-43ee-83ff-b9134dbeb544",
+    "film_title": "Fight Club",
+    "comment_text": "10/10 would recommend to a friend.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:30.066505",
+    "confidence_score": 0.67
+  },
+  {
+    "comment_id": "f5664f1e-e41c-4f4d-8d69-9abe3e92c27e",
+    "film_title": "Avatar",
+    "comment_text": "Soundtrack carried the movie.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:32.088214",
+    "confidence_score": 0.98
+  },
+  {
+    "comment_id": "0c1f1ae1-1efe-4078-bb91-55f9fa092717",
+    "film_title": "The Matrix",
+    "comment_text": "Absolutely terrible. Waste of time.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:34.105282",
+    "confidence_score": 0.87
+  },
+  {
+    "comment_id": "3857b382-3e31-480f-b798-237dc88bf690",
+    "film_title": "Pulp Fiction",
+    "comment_text": "Can't believe how much I loved this!",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:36.121565",
+    "confidence_score": 0.91
+  },
+  {
+    "comment_id": "88f9a665-83a6-41b5-9c38-b6768e820c30",
+    "film_title": "Titanic",
+    "comment_text": "Loved the character development.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:38.139523",
+    "confidence_score": 0.73
+  },
+  {
+    "comment_id": "69487157-441b-49bf-8c78-978bc73279bd",
+    "film_title": "Zootopia",
+    "comment_text": "Weak script but strong acting.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:40.155923",
+    "confidence_score": 0.86
+  },
+  {
+    "comment_id": "df5107b8-b77d-43c3-b799-1ee7daa9f83c",
+    "film_title": "Barbie",
+    "comment_text": "Absolutely terrible. Waste of time.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:42.177006",
+    "confidence_score": 0.76
+  },
+  {
+    "comment_id": "d3cd9dcc-2b68-4bb8-973c-f1a536428f41",
+    "film_title": "Black Panther",
+    "comment_text": "Realistic and emotional.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:44.195165",
+    "confidence_score": 0.76
+  },
+  {
+    "comment_id": "558d4afe-444b-4a38-920f-af7f90a2dd30",
+    "film_title": "Spider-Man: No Way Home",
+    "comment_text": "Plot holes everywhere!",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:46.209508",
+    "confidence_score": 0.56
+  },
+  {
+    "comment_id": "be44f54f-38bf-4b4f-b37f-cd7caaf1a6c7",
+    "film_title": "La La Land",
+    "comment_text": "10/10 would recommend to a friend.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:48.227074",
+    "confidence_score": 0.74
+  },
+  {
+    "comment_id": "8c62ffa8-0fd8-4240-ab20-d41c01e12d66",
+    "film_title": "Ratatouille",
+    "comment_text": "I fell asleep halfway through.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:50.247954",
+    "confidence_score": 0.71
+  },
+  {
+    "comment_id": "e5552c70-8ac8-4be2-8277-ac576c318a2a",
+    "film_title": "Luca",
+    "comment_text": "Will definitely watch again.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:52.269039",
+    "confidence_score": 0.74
+  },
+  {
+    "comment_id": "0bb11274-8a54-4a90-b84f-74762c330fd4",
+    "film_title": "The Social Network",
+    "comment_text": "Overrated and boring.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:54.279118",
+    "confidence_score": 0.63
+  },
+  {
+    "comment_id": "b93885a7-815a-4635-89e3-91b08a594e83",
+    "film_title": "Toy Story",
+    "comment_text": "Incredible plot and mind-blowing visuals!",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:14:56.298398",
+    "confidence_score": 0.98
+  },
+  {
+    "comment_id": "5830799b-7c25-4527-a3cc-01a9fcd6786e",
+    "film_title": "The Incredibles",
+    "comment_text": "Worst movie ever made.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:14:58.318202",
+    "confidence_score": 0.91
+  },
+  {
+    "comment_id": "9407ca23-4816-4ad1-861c-f5f7e37c12c8",
+    "film_title": "Inside Out",
+    "comment_text": "Oscar-worthy performance!",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:00.346335",
+    "confidence_score": 0.71
+  },
+  {
+    "comment_id": "ba474593-8006-4492-acdf-732e985025cd",
+    "film_title": "Encanto",
+    "comment_text": "The characters were very flat.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:02.362117",
+    "confidence_score": 0.73
+  },
+  {
+    "comment_id": "374c99a5-b4a9-401a-8eb6-5dd2afab77c5",
+    "film_title": "Cars",
+    "comment_text": "Surprised me in the best way.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:15:04.376267",
+    "confidence_score": 0.9
+  },
+  {
+    "comment_id": "969132e0-ffab-486f-b6de-9812095c70cf",
+    "film_title": "Inception",
+    "comment_text": "Fun for the whole family.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:06.396866",
+    "confidence_score": 0.94
+  },
+  {
+    "comment_id": "b1887d61-d558-41a7-a27d-d9178db6d5b0",
+    "film_title": "Doctor Strange",
+    "comment_text": "A masterpiece of modern cinema.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:15:08.415599",
+    "confidence_score": 0.71
+  },
+  {
+    "comment_id": "52a1a7a2-877a-45d4-a84c-a3fe2364c6fe",
+    "film_title": "Fight Club",
+    "comment_text": "Visually stunning, emotionally empty.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:15:10.437366",
+    "confidence_score": 0.69
+  },
+  {
+    "comment_id": "9e9e5225-3a3b-497e-8ba8-f636c0b09b29",
+    "film_title": "Encanto",
+    "comment_text": "Surprisingly good!",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:12.457846",
+    "confidence_score": 0.62
+  },
+  {
+    "comment_id": "a08581c4-2313-41ed-b211-4c937f224264",
+    "film_title": "Luca",
+    "comment_text": "Loved the character development.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:14.471267",
+    "confidence_score": 0.72
+  },
+  {
+    "comment_id": "af05d7d4-4e25-4907-bc22-02f5c6ea0dbf",
+    "film_title": "The Godfather",
+    "comment_text": "Predictable ending.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:16.490583",
+    "confidence_score": 0.6
+  },
+  {
+    "comment_id": "c472ee03-e7c2-4c47-81bb-e8bdfd0aea28",
+    "film_title": "La La Land",
+    "comment_text": "Visually stunning, emotionally empty.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:18.505609",
+    "confidence_score": 0.88
+  },
+  {
+    "comment_id": "c753926b-ddd8-4722-812d-ac09c5cfb32c",
+    "film_title": "Inside Out",
+    "comment_text": "The sequel was better.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:20.517902",
+    "confidence_score": 0.77
+  },
+  {
+    "comment_id": "9f0bb3f5-1802-4752-bdfc-fbe344b11706",
+    "film_title": "Soul",
+    "comment_text": "Predictable ending.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:22.534741",
+    "confidence_score": 0.63
+  },
+  {
+    "comment_id": "43c243f3-ae41-40c2-8013-1d2146cc2863",
+    "film_title": "Toy Story",
+    "comment_text": "I expected more from this cast.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:24.547063",
+    "confidence_score": 0.78
+  },
+  {
+    "comment_id": "6fddc6a6-61d4-491f-b887-931051a20fd0",
+    "film_title": "The Shawshank Redemption",
+    "comment_text": "Felt like a rollercoaster.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:26.568524",
+    "confidence_score": 0.77
+  },
+  {
+    "comment_id": "90f43452-1d05-41f9-9167-3588644f59eb",
+    "film_title": "Ratatouille",
+    "comment_text": "The sequel was better.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:28.582684",
+    "confidence_score": 0.79
+  },
+  {
+    "comment_id": "568c1040-4d5c-41e8-9088-ad7dd2c72fd2",
+    "film_title": "Shrek",
+    "comment_text": "Worst movie ever made.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:15:30.598782",
+    "confidence_score": 0.74
+  },
+  {
+    "comment_id": "358afb64-e9d5-4691-9f91-4da1d746d109",
+    "film_title": "The Prestige",
+    "comment_text": "Exceeded my expectations.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:32.617518",
+    "confidence_score": 0.84
+  },
+  {
+    "comment_id": "d849a075-ee70-46bf-9769-1f1067df9352",
+    "film_title": "The Lion King",
+    "comment_text": "Dialogue felt unnatural.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:34.630965",
+    "confidence_score": 0.89
+  },
+  {
+    "comment_id": "b0b29b7e-aea7-4cb4-a06c-a7c5afb99283",
+    "film_title": "Parasite",
+    "comment_text": "Wouldn't watch it again.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:15:36.648439",
+    "confidence_score": 0.89
+  },
+  {
+    "comment_id": "4089bd20-39c9-40de-a0aa-e07d9449e36c",
+    "film_title": "Brave",
+    "comment_text": "Felt like two movies mashed together.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:38.668053",
+    "confidence_score": 0.66
+  },
+  {
+    "comment_id": "da5c6e45-df6f-4af9-8e23-3cb5d72de068",
+    "film_title": "Fight Club",
+    "comment_text": "Incredible plot and mind-blowing visuals!",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:15:40.690683",
+    "confidence_score": 0.98
+  },
+  {
+    "comment_id": "5455353d-cf9b-405e-91c6-29fc62c29057",
+    "film_title": "The Batman",
+    "comment_text": "Painfully long and slow-paced.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:15:42.713670",
+    "confidence_score": 0.69
+  },
+  {
+    "comment_id": "83d926cb-0bde-42f1-9679-42171ab4bf5d",
+    "film_title": "No Time to Die",
+    "comment_text": "Perfect Sunday night movie.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:15:44.723931",
+    "confidence_score": 0.51
+  },
+  {
+    "comment_id": "3dcc3651-ec97-4e67-9e74-5a8cabae3ca5",
+    "film_title": "The Lion King",
+    "comment_text": "Incredible plot and mind-blowing visuals!",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:46.738447",
+    "confidence_score": 0.93
+  },
+  {
+    "comment_id": "5795ffed-7069-47fa-bca0-3b75d05e9402",
+    "film_title": "Shrek",
+    "comment_text": "Will definitely watch again.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:48.752615",
+    "confidence_score": 0.71
+  },
+  {
+    "comment_id": "e97a01c3-bf11-44ce-86b5-0d033ad37437",
+    "film_title": "Onward",
+    "comment_text": "Weak script but strong acting.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:50.780697",
+    "confidence_score": 0.8
+  },
+  {
+    "comment_id": "a020013d-e4d7-46f4-8d80-bc6d0adc5517",
+    "film_title": "Toy Story",
+    "comment_text": "Loved the character development.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:52.796416",
+    "confidence_score": 0.77
+  },
+  {
+    "comment_id": "ef0c5603-dd39-4919-8702-21be305e5c9b",
+    "film_title": "Up",
+    "comment_text": "I expected more from this cast.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:54.808847",
+    "confidence_score": 0.96
+  },
+  {
+    "comment_id": "18c24cc4-d120-4b2b-8a26-b6ad9054c055",
+    "film_title": "Avatar",
+    "comment_text": "Painfully long and slow-paced.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:56.830091",
+    "confidence_score": 0.98
+  },
+  {
+    "comment_id": "8eff5403-77d2-4450-a3d9-6cad028a1436",
+    "film_title": "Cars",
+    "comment_text": "Loved the character development.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:15:58.848233",
+    "confidence_score": 0.72
+  },
+  {
+    "comment_id": "140b30d3-dd89-415e-acc8-57e361d03a6d",
+    "film_title": "Whiplash",
+    "comment_text": "Soundtrack carried the movie.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:16:00.857701",
+    "confidence_score": 0.66
+  },
+  {
+    "comment_id": "489674c5-c8f9-4f5c-8e4f-b09fe7bf140f",
+    "film_title": "Pulp Fiction",
+    "comment_text": "Too much CGI ruined it.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:16:02.875303",
+    "confidence_score": 0.51
+  },
+  {
+    "comment_id": "f31c3fb1-9da9-48e1-b801-bd6dc72b1efc",
+    "film_title": "Moana",
+    "comment_text": "Completely forgettable.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:23:19.270259",
+    "confidence_score": 0.99
+  },
+  {
+    "comment_id": "c234d170-28b7-4a90-8f4d-5de5b86931ec",
+    "film_title": "Zootopia",
+    "comment_text": "Such a classic, never gets old.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:23:21.295022",
+    "confidence_score": 0.62
+  },
+  {
+    "comment_id": "1745bde9-e17b-4e4a-818c-22a952ae67ed",
+    "film_title": "Everything Everywhere All at Once",
+    "comment_text": "Not for everyone.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:23:23.312583",
+    "confidence_score": 0.86
+  },
+  {
+    "comment_id": "ec4d04ba-59f9-46d2-bada-58ffc753b485",
+    "film_title": "Cars",
+    "comment_text": "Left me speechless.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:23:25.333790",
+    "confidence_score": 0.86
+  },
+  {
+    "comment_id": "44326c04-6dc3-4b01-92d1-b62e2f61265a",
+    "film_title": "Forrest Gump",
+    "comment_text": "The director did a great job!",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:23:27.350962",
+    "confidence_score": 0.93
+  },
+  {
+    "comment_id": "048bfb86-3ec8-4428-9eec-a1dcd4c06c67",
+    "film_title": "Interstellar",
+    "comment_text": "Absolutely terrible. Waste of time.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:23:29.369987",
+    "confidence_score": 0.8
+  },
+  {
+    "comment_id": "45239006-b221-49b5-a69b-f4787c38ffb0",
+    "film_title": "Black Panther",
+    "comment_text": "Worst movie ever made.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:23:31.389031",
+    "confidence_score": 0.83
+  },
+  {
+    "comment_id": "26794119-09c8-42cb-ac8c-fafa05d0a1d0",
+    "film_title": "Frozen",
+    "comment_text": "Completely forgettable.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:23:33.405864",
+    "confidence_score": 0.68
+  },
+  {
+    "comment_id": "f0cb23fa-1492-465e-9820-6c8143aa99da",
+    "film_title": "WALL-E",
+    "comment_text": "Not for everyone.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:23:35.424363",
+    "confidence_score": 0.52
+  },
+  {
+    "comment_id": "aeb0e343-9925-4bcf-8d5c-a34e7084be87",
+    "film_title": "Pulp Fiction",
+    "comment_text": "The pacing was too slow.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:23:37.442772",
+    "confidence_score": 0.61
+  },
+  {
+    "comment_id": "512b9048-4b97-4db0-8fbe-b17c5ba82885",
+    "film_title": "Onward",
+    "comment_text": "Felt like a rollercoaster.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:23:39.459536",
+    "confidence_score": 0.66
+  },
+  {
+    "comment_id": "95cbcc99-a2e0-45a9-be0c-4b4dd1a5858f",
+    "film_title": "Luca",
+    "comment_text": "Can't believe how much I loved this!",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:33:58.105975",
+    "confidence_score": 0.75
+  },
+  {
+    "comment_id": "20836f0b-e214-4af2-8492-3f9aa4ec7723",
+    "film_title": "The Lion King",
+    "comment_text": "This movie changed my life.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:34:00.130028",
+    "confidence_score": 0.92
+  },
+  {
+    "comment_id": "0729aa41-981e-4da0-8cbf-bc2577a4f951",
+    "film_title": "Whiplash",
+    "comment_text": "Impressive world-building.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:34:02.146940",
+    "confidence_score": 0.5
+  },
+  {
+    "comment_id": "b440a077-a083-41bc-ae51-7f33e801de2b",
+    "film_title": "The Godfather",
+    "comment_text": "10/10 would recommend to a friend.",
+    "is_fake": false,
+    "detected_at": "2025-03-29T11:34:04.164497",
+    "confidence_score": 0.92
+  },
+  {
+    "comment_id": "07b10820-0dcb-424d-b9e5-679df46e604c",
+    "film_title": "No Time to Die",
+    "comment_text": "I laughed, I cried, I cheered.",
+    "is_fake": true,
+    "detected_at": "2025-03-29T11:34:06.180459",
+    "confidence_score": 0.7
   }
 ]
