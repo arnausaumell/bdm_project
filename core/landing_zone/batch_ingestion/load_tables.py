@@ -1,10 +1,10 @@
-import os
-import sys
+# import os
+# import sys
 
-sys.path.append(os.getcwd())
+# sys.path.append(os.getcwd())
 
+import pandas as pd
 from datetime import datetime, timedelta
-from prefect import flow, task
 from loguru import logger
 
 from core.data_ingestion.tmdb_connector import TMDbConnector
@@ -12,7 +12,6 @@ from core.data_ingestion.trakt_connector import TraktConnector
 from core.data_ingestion.omdb_connector import OMDBConnector
 from core.data_ingestion.youtube_connector import YouTubeConnector
 from utils.deltalake_manager import DeltaLakeManager
-import pandas as pd
 
 
 N_DAYS_AGO = 4
@@ -78,7 +77,6 @@ def update_movie_ratings(
     )
 
 
-@task
 def update_providers(
     all_movies: list[dict],
     tmdb_connector: TMDbConnector,
@@ -101,7 +99,6 @@ def update_providers(
     )
 
 
-@task
 def update_youtube_stats(
     all_movies: list[dict],
     youtube_connector: YouTubeConnector,
@@ -134,7 +131,6 @@ def update_youtube_stats(
     )
 
 
-@flow(name="Update Movie Data")
 def update_movie_data(
     n_days_ago: int = N_DAYS_AGO,
 ):
