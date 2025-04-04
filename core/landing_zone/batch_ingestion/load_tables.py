@@ -1,11 +1,13 @@
-# import os
-# import sys
+import os
+import sys
 
-# sys.path.append(os.getcwd())
+sys.path.append(os.getcwd())
 
 import pandas as pd
 from datetime import datetime, timedelta
 from loguru import logger
+from prefect import flow, task
+from prefect.docker import DockerImage
 
 from core.data_ingestion.tmdb_connector import TMDbConnector
 from core.data_ingestion.trakt_connector import TraktConnector
@@ -18,6 +20,7 @@ N_DAYS_AGO = 4
 REGION = "ES"
 
 
+@task
 def get_daily_releases(
     tmdb_connector: TMDbConnector,
     delta_lake_manager: DeltaLakeManager,
@@ -38,6 +41,7 @@ def get_daily_releases(
     return released_movies
 
 
+@task
 def get_trakt_details(
     released_movies: list[dict],
     trakt_connector: TraktConnector,
@@ -58,6 +62,7 @@ def get_trakt_details(
     return trakt_movies
 
 
+@task
 def update_movie_ratings(
     all_movies: list[dict],
     delta_lake_manager: DeltaLakeManager,
@@ -77,6 +82,7 @@ def update_movie_ratings(
     )
 
 
+@task
 def update_providers(
     all_movies: list[dict],
     tmdb_connector: TMDbConnector,
@@ -99,6 +105,7 @@ def update_providers(
     )
 
 
+@task
 def update_youtube_stats(
     all_movies: list[dict],
     youtube_connector: YouTubeConnector,
@@ -131,26 +138,49 @@ def update_youtube_stats(
     )
 
 
-def update_movie_data(
-    n_days_ago: int = N_DAYS_AGO,
-):
-    """Main flow to update movie data"""
+@task
+def test_environment():
+    logger.info("Testing environment variables")
+    aws_access_key = os.getenv("AWS_ACCESS_KEY_ID")
+    aws_secret_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+    aws_region = os.getenv("AWS_DEFAULT_REGION")
+
+    logger.info(f"AWS Access Key exists: {bool(aws_access_key)}")
+    logger.info(f"AWS Secret Key exists: {bool(aws_secret_key)}")
+    logger.info(f"AWS Region: {aws_region}")
+
+    return True
+
+
+@flow(name="update-movie-data")
+def update_movie_data(n_days_ago: int = N_DAYS_AGO):
+    """Update movie data in Delta Lake tables"""
+    logger.info("Starting update_movie_data flow")
+
+    # Test environment first
+    test_environment()
+
     # Initialize connectors
+    logger.info("Initializing connectors")
     tmdb_connector = TMDbConnector(region=REGION)
     trakt_connector = TraktConnector()
     omdb_connector = OMDBConnector()
     youtube_connector = YouTubeConnector()
 
+    logger.info("Initializing DeltaLakeManager")
     delta_lake_manager = DeltaLakeManager(
         s3_bucket_name="bdm-movies-db",
     )
 
     # Get new releases and their Trakt details
+    logger.info("Getting daily releases")
     tmdb_released_movies = get_daily_releases(
         tmdb_connector=tmdb_connector,
         delta_lake_manager=delta_lake_manager,
         n_days_ago=n_days_ago,
     )
+
+    logger.info(f"Found {len(tmdb_released_movies)} new releases")
     trakt_movies = get_trakt_details(
         released_movies=tmdb_released_movies,
         trakt_connector=trakt_connector,
@@ -185,3 +215,18 @@ def update_movie_data(
     delta_lake_manager.show_table(table_path="omdb/movie_ratings")
     delta_lake_manager.show_table(table_path="tmdb/movies_providers")
     delta_lake_manager.show_table(table_path="youtube/trailer_video_stats")
+
+
+if __name__ == "__main__":
+    logger.info("Creating deployment")
+    deployment = update_movie_data.deploy(
+        name="batch-ingestion-deployment",
+        work_pool_name="my-docker-pool",
+        image=DockerImage(
+            name="arnausau11/batch-ingestion",
+            tag="latest",
+            dockerfile="core/landing_zone/batch_ingestion/Dockerfile",
+        ),
+        push=True,
+    )
+    logger.info("Deployment created")
