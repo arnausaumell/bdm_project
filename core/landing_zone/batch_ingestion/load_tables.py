@@ -222,6 +222,7 @@ if __name__ == "__main__":
     deployment = update_movie_data.deploy(
         name="batch-ingestion-deployment",
         work_pool_name="my-docker-pool",
+        cron="0 0 * * *",
         image=DockerImage(
             name="arnausau11/batch-ingestion",
             tag="latest",
