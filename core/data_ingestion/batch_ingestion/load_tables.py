@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-N_DAYS_AGO = 4
+N_DAYS_AGO = 1
 REGION = "ES"
 
 

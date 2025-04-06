@@ -9,8 +9,7 @@ COPY requirements/producer.txt requirements/producer.txt
 # Install dependencies
 RUN pip install -r requirements/producer.txt
 
-# Copy the entire producer folder and utils
+# Copy the entire producer folder
 COPY core/data_ingestion/streaming_ingestion/producer ./producer
-COPY utils ./utils
 
 CMD ["python3", "producer/kafka_producer.py"]
