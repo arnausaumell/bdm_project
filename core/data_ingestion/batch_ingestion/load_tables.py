@@ -19,6 +19,9 @@ from core.data_ingestion.batch_ingestion.connectors.youtube_connector import (
     YouTubeConnector,
 )
 from core.landing_zone.deltalake_manager import DeltaLakeManager
+from dotenv import load_dotenv
+
+load_dotenv()
 
 N_DAYS_AGO = 4
 REGION = "ES"

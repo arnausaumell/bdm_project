@@ -43,7 +43,7 @@ def main():
             comments = [msg.value for msg in messages]
             delta_lake_manager.upsert_to_table(
                 data=pd.DataFrame(comments),
-                table_path="stream/blog_comments",
+                table_path="blog_comments",
                 merge_key="comment_id",
             )
 
