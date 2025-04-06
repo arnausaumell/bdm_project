@@ -7,6 +7,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 from loguru import logger
 from prefect import flow, task
+from prefect.cache_policies import NO_CACHE
 from prefect.docker import DockerImage
 
 from core.data_ingestion.batch_ingestion.connectors.tmdb_connector import TMDbConnector
@@ -43,7 +44,7 @@ def get_daily_releases(
     return released_movies
 
 
-@task
+@task(cache_policy=NO_CACHE)
 def get_trakt_details(
     released_movies: list[dict],
     trakt_connector: TraktConnector,
@@ -64,7 +65,7 @@ def get_trakt_details(
     return trakt_movies
 
 
-@task
+@task(cache_policy=NO_CACHE)
 def update_movie_ratings(
     all_movies: list[dict],
     delta_lake_manager: DeltaLakeManager,
@@ -84,7 +85,7 @@ def update_movie_ratings(
     )
 
 
-@task
+@task(cache_policy=NO_CACHE)
 def update_providers(
     all_movies: list[dict],
     tmdb_connector: TMDbConnector,
@@ -107,7 +108,7 @@ def update_providers(
     )
 
 
-@task
+@task(cache_policy=NO_CACHE)
 def update_youtube_stats(
     all_movies: list[dict],
     youtube_connector: YouTubeConnector,
@@ -228,7 +229,7 @@ if __name__ == "__main__":
         image=DockerImage(
             name="arnausau11/batch-ingestion",
             tag="latest",
-            dockerfile="core/landing_zone/batch_ingestion/Dockerfile",
+            dockerfile="core/data_ingestion/batch_ingestion/Dockerfile",
         ),
         push=True,
     )

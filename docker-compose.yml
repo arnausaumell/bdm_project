@@ -68,7 +68,7 @@ services:
       - ./data:/app/data
     networks:
       - kafka_net
-    command: [ "python3", "kafka_consumer.py" ]
+    command: [ "python3", "/app/core/data_ingestion/streaming_ingestion/consumer/kafka_consumer.py" ]
 
   kafka-client:
     image: confluentinc/cp-kafkacat:latest

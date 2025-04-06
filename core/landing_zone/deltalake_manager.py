@@ -6,7 +6,7 @@ from pyspark.sql import SparkSession
 from delta import DeltaTable
 import pandas as pd
 from loguru import logger
-from utils.s3_manager import S3Manager
+from core.landing_zone.s3_manager import S3Manager
 
 pd.DataFrame.iteritems = pd.DataFrame.items
 

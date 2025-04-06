@@ -19,10 +19,21 @@ ENV PATH=$PATH:$JAVA_HOME/bin
 COPY requirements/base.txt requirements/base.txt
 COPY requirements/comments.txt requirements/comments.txt
 
+# Copy .env file
+COPY .env .env
+
 # Install dependencies
 RUN pip install -r requirements/comments.txt
 
-# Copy service code
-COPY core/data_ingestion/streaming_ingestion/comments_generator/ ./comments_generator
+# Copy service code and ensure proper Python package structure
+COPY core/ ./core/
+RUN touch ./core/__init__.py \
+    && touch ./core/data_ingestion/__init__.py \
+    && touch ./core/data_ingestion/batch_ingestion/__init__.py \
+    && touch ./core/data_ingestion/streaming_ingestion/__init__.py \
+    && touch ./core/landing_zone/__init__.py
 
-CMD ["python3", "comments_generator/app.py"] 
+# Set Python path to include the app directory
+ENV PYTHONPATH=/app
+
+CMD ["python3", "core/data_ingestion/streaming_ingestion/comments_generator/app.py"] 

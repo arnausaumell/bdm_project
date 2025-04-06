@@ -2,8 +2,11 @@ from kafka import KafkaConsumer
 import json
 import time
 from loguru import logger
-from utils.deltalake_manager import DeltaLakeManager
+from core.landing_zone.deltalake_manager import DeltaLakeManager
 import pandas as pd
+from dotenv import load_dotenv
+
+load_dotenv()
 
 TOPIC = "comments"
 BOOTSTRAP_SERVERS = ["kafka:9092"]

@@ -56,6 +56,8 @@ echo -e "${GREEN}Successfully logged into Docker Hub!${NC}"
 
 # Configure Prefect server URL
 echo -e "${BLUE}Configuring Prefect server...${NC}"
+# Unset any existing PREFECT_API_URL environment variable
+unset PREFECT_API_URL
 prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api
 
 # Start Prefect server in the background
@@ -81,11 +83,11 @@ sleep 5
 
 # Build and deploy the flow
 echo -e "${BLUE}Building and deploying the batch ingestion flow...${NC}"
-docker build -t arnausau11/batch-ingestion:latest -f core/landing_zone/batch_ingestion/Dockerfile .
+docker build -t arnausau11/batch-ingestion:latest -f core/data_ingestion/batch_ingestion/Dockerfile .
 docker push arnausau11/batch-ingestion:latest
 
 # Run the Python script with the correct PYTHONPATH
-python3 core/landing_zone/batch_ingestion/load_tables.py
+python3 core/data_ingestion/batch_ingestion/load_tables.py
 
 echo -e "${GREEN}Setup complete!${NC}"
 echo -e "${GREEN}Prefect UI is available at: http://127.0.0.1:4200${NC}"

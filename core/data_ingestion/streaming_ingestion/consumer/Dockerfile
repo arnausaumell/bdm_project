@@ -19,12 +19,22 @@ ENV PATH=$PATH:$JAVA_HOME/bin
 COPY requirements/base.txt requirements/base.txt
 COPY requirements/consumer.txt requirements/consumer.txt
 
+# Copy .env file
+COPY .env .env
+
 # Install dependencies
 RUN pip install -r requirements/consumer.txt
 
-# Copy service code and utils
-COPY core/data_ingestion/streaming_ingestion/consumer/kafka_consumer.py .
-COPY utils ./utils
-COPY .env .
+# Copy service code and ensure proper Python package structure
+COPY core/ ./core/
+RUN touch ./core/__init__.py \
+    && touch ./core/data_ingestion/__init__.py \
+    && touch ./core/data_ingestion/batch_ingestion/__init__.py \
+    && touch ./core/data_ingestion/streaming_ingestion/__init__.py \
+    && touch ./core/landing_zone/__init__.py
 
-CMD ["python3", "kafka_consumer.py"]
+# Set Python path to include the app directory
+ENV PYTHONPATH=/app
+
+# The correct path to the consumer script
+CMD ["python3", "/app/core/data_ingestion/streaming_ingestion/consumer/kafka_consumer.py"]
