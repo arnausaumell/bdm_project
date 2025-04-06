@@ -85,7 +85,7 @@ docker build -t arnausau11/batch-ingestion:latest -f core/landing_zone/batch_ing
 docker push arnausau11/batch-ingestion:latest
 
 # Run the Python script with the correct PYTHONPATH
-python core/landing_zone/batch_ingestion/load_tables.py
+python3 core/landing_zone/batch_ingestion/load_tables.py
 
 echo -e "${GREEN}Setup complete!${NC}"
 echo -e "${GREEN}Prefect UI is available at: http://127.0.0.1:4200${NC}"

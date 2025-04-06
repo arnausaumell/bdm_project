@@ -23,7 +23,7 @@ COPY requirements/consumer.txt requirements/consumer.txt
 RUN pip install -r requirements/consumer.txt
 
 # Copy service code and utils
-COPY core/landing_zone/streaming_ingestion/consumer/kafka_consumer.py .
+COPY core/data_ingestion/streaming_ingestion/consumer/kafka_consumer.py .
 COPY utils ./utils
 COPY .env .
 

@@ -31,7 +31,7 @@ services:
   comments_generator:
     build:
       context: .
-      dockerfile: core/landing_zone/streaming_ingestion/comments_generator/Dockerfile
+      dockerfile: core/data_ingestion/streaming_ingestion/comments_generator/Dockerfile
     container_name: comments_generator
     ports:
       - "8000:8000"
@@ -41,7 +41,7 @@ services:
   producer:
     build:
       context: .
-      dockerfile: core/landing_zone/streaming_ingestion/producer/Dockerfile
+      dockerfile: core/data_ingestion/streaming_ingestion/producer/Dockerfile
     container_name: kafka_producer
     depends_on:
       - kafka
@@ -60,7 +60,7 @@ services:
   consumer:
     build:
       context: .
-      dockerfile: core/landing_zone/streaming_ingestion/consumer/Dockerfile
+      dockerfile: core/data_ingestion/streaming_ingestion/consumer/Dockerfile
     container_name: kafka_consumer
     depends_on:
       - kafka

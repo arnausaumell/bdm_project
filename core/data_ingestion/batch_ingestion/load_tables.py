@@ -9,24 +9,26 @@ from loguru import logger
 from prefect import flow, task
 from prefect.docker import DockerImage
 
-from core.data_ingestion.tmdb_connector import TMDbConnector
-from core.data_ingestion.trakt_connector import TraktConnector
-from core.data_ingestion.omdb_connector import OMDBConnector
-from core.data_ingestion.youtube_connector import YouTubeConnector
-from utils.deltalake_manager import DeltaLakeManager
-
+from core.data_ingestion.batch_ingestion.connectors.tmdb_connector import TMDbConnector
+from core.data_ingestion.batch_ingestion.connectors.trakt_connector import (
+    TraktConnector,
+)
+from core.data_ingestion.batch_ingestion.connectors.omdb_connector import OMDBConnector
+from core.data_ingestion.batch_ingestion.connectors.youtube_connector import (
+    YouTubeConnector,
+)
+from core.landing_zone.deltalake_manager import DeltaLakeManager
 
 N_DAYS_AGO = 4
 REGION = "ES"
 
 
-@task
 def get_daily_releases(
     tmdb_connector: TMDbConnector,
     delta_lake_manager: DeltaLakeManager,
     n_days_ago: int = N_DAYS_AGO,
 ):
-    """Get last N_DAYS_AGO releases from TMDB"""
+    """Get last n_days_ago releases from TMDB"""
     start_date = (datetime.now() - timedelta(days=n_days_ago)).strftime("%Y-%m-%d")
     end_date = datetime.now().strftime("%Y-%m-%d")
     released_movies = tmdb_connector.get_movies_by_date_range(
