@@ -8,6 +8,7 @@ from typing import Dict, List, Set
 import asyncio
 from loguru import logger
 from dotenv import load_dotenv
+from asyncio import Task
 
 from fake_comments import COMMENTS
 
@@ -19,7 +20,7 @@ class AppState:
     def __init__(self):
         self.comments_history: List[Dict] = []
         self.active_connections: Set[WebSocket] = set()
-        self.generator_task = None
+        self.generator_task: Task | None = None
 
 
 @asynccontextmanager
