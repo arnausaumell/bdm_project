@@ -10,7 +10,6 @@ load_dotenv()
 
 TOPIC = "comments"
 BOOTSTRAP_SERVERS = ["kafka:9092"]
-OUTPUT_FILE = "data/consolidated_comments.json"
 GROUP_ID = "cold_path_group"
 
 
