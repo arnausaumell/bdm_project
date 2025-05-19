@@ -1,0 +1,58 @@
+[
+    {
+        "logo_path": "/9ghgSC0MA082EL6HLCW3GalykFD.jpg",
+        "provider_id": 2,
+        "provider_name": "Apple TV",
+        "display_priority": 4,
+        "provider_type": "buy"
+    },
+    {
+        "logo_path": "/bZvc9dXrXNly7cA0V4D9pR8yJwm.jpg",
+        "provider_id": 35,
+        "provider_name": "Rakuten TV",
+        "display_priority": 8,
+        "provider_type": "buy"
+    },
+    {
+        "logo_path": "/seGSXajazLMCKGB5hnRCidtjay1.jpg",
+        "provider_id": 10,
+        "provider_name": "Amazon Video",
+        "display_priority": 35,
+        "provider_type": "buy"
+    },
+    {
+        "logo_path": "/9ghgSC0MA082EL6HLCW3GalykFD.jpg",
+        "provider_id": 2,
+        "provider_name": "Apple TV",
+        "display_priority": 4,
+        "provider_type": "rent"
+    },
+    {
+        "logo_path": "/f6TRLB3H4jDpFEZ0z2KWSSvu1SB.jpg",
+        "provider_id": 149,
+        "provider_name": "Movistar Plus+ Ficci\u00f3n Total ",
+        "display_priority": 6,
+        "provider_type": "rent"
+    },
+    {
+        "logo_path": "/bZvc9dXrXNly7cA0V4D9pR8yJwm.jpg",
+        "provider_id": 35,
+        "provider_name": "Rakuten TV",
+        "display_priority": 8,
+        "provider_type": "rent"
+    },
+    {
+        "logo_path": "/ozZU2vSlyL11rFGEkq1HE0yxIJq.jpg",
+        "provider_id": 64,
+        "provider_name": "Filmin Plus",
+        "display_priority": 11,
+        "provider_type": "rent"
+    },
+    {
+        "logo_path": "/seGSXajazLMCKGB5hnRCidtjay1.jpg",
+        "provider_id": 10,
+        "provider_name": "Amazon Video",
+        "display_priority": 35,
+        "provider_type": "rent"
+    }
+]

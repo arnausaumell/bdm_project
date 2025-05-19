@@ -65,7 +65,7 @@ async def notify_subscribers(state: AppState, comment: dict):
 
 
 def get_db_tables() -> list[dict]:
-    from core.landing_zone.deltalake_manager import DeltaLakeManager
+    from core.landing_and_trusted_zone.deltalake_manager import DeltaLakeManager
 
     delta_lake_manager = DeltaLakeManager()
     db_films = delta_lake_manager.read_table("tmdb/movies_released")

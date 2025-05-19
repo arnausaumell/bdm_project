@@ -2,7 +2,7 @@ from kafka import KafkaConsumer
 import json
 import time
 from loguru import logger
-from core.landing_zone.deltalake_manager import DeltaLakeManager
+from core.landing_and_trusted_zone.deltalake_manager import DeltaLakeManager
 import pandas as pd
 from dotenv import load_dotenv
 

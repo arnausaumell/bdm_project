@@ -25,3 +25,12 @@ class OMDBConnector:
             "imdb_votes": all_details.get("imdbVotes"),
             "imdb_id": all_details.get("imdbID"),
         }
+
+
+if __name__ == "__main__":
+    import json
+
+    omdb_connector = OMDBConnector()
+    movie_ratings = omdb_connector.get_movie_by_imdb_id("tt28015403")
+    with open("movie_ratings.json", "w") as f:
+        json.dump(movie_ratings, f, indent=4)

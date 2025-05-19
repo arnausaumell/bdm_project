@@ -1,0 +1,37 @@
+Metadata-Version: 2.4
+Name: prefect-docker
+Version: 0.6.4
+Summary: Prefect integrations for interacting with Docker.
+Author-email: "Prefect Technologies, Inc." <help@prefect.io>
+License: Apache License 2.0
+Project-URL: Homepage, https://github.com/PrefectHQ/prefect/tree/main/src/integrations/prefect-docker
+Keywords: prefect
+Classifier: Natural Language :: English
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: prefect>=3.3.5
+Requires-Dist: docker>=6.1.1
+Requires-Dist: exceptiongroup
+Dynamic: license-file
+
+# prefect-docker
+
+<p align="center">
+    <a href="https://pypi.python.org/pypi/prefect-docker/" alt="PyPI version">
+        <img alt="PyPI" src="https://img.shields.io/pypi/v/prefect-docker?color=26272B&labelColor=090422"></a>
+    <a href="https://pepy.tech/badge/prefect-docker/" alt="Downloads">
+        <img src="https://img.shields.io/pypi/dm/prefect-docker?color=26272B&labelColor=090422" /></a>
+</p>
+
+See the docs at [https://docs.prefect.io/integrations/prefect-docker](https://docs.prefect.io/integrations/prefect-docker) for more information.

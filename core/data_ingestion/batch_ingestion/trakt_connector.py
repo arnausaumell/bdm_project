@@ -44,3 +44,12 @@ class TraktConnector:
                     "imdb_id": all_movie_details["ids"]["imdb"],
                 }
         return None
+
+
+if __name__ == "__main__":
+    import json
+
+    trakt_connector = TraktConnector()
+    movie_details = trakt_connector.get_movie_details_tmdb_id(1138194)
+    with open("movie_details.json", "w") as f:
+        json.dump(movie_details, f, indent=4)

@@ -117,7 +117,24 @@ class TMDbConnector:
             f"{self._base_url}/movie/{movie_id}/watch/providers",
             params={"api_key": self._api_key},
         )
-        return response.json().get("results", {}).get(self._region, {})
+        providers_dict = response.json().get("results", {}).get(self._region, {})
+        all_providers = []
+        for provider_type, providers_list in providers_dict.items():
+            if provider_type == "link":
+                continue
+            all_providers.extend(
+                [
+                    {
+                        "logo_path": provider["logo_path"],
+                        "provider_id": provider["provider_id"],
+                        "provider_name": provider["provider_name"],
+                        "display_priority": provider["display_priority"],
+                        "provider_type": provider_type,
+                    }
+                    for provider in providers_list
+                ]
+            )
+        return all_providers
 
     def _get_movie_languages(self, movie_id: int):
         response = requests.get(
@@ -175,3 +192,20 @@ class TMDbConnector:
             for field in selected_fields
             if field in movie_details
         }
+
+
+if __name__ == "__main__":
+    import json
+    import pandas as pd
+
+    tmdb_connector = TMDbConnector()
+    movies = tmdb_connector.get_movies_by_date_range(
+        start_date="2025-05-13", end_date="2025-05-18"
+    )
+    print(len(movies))
+    with open("movies.json", "w") as f:
+        json.dump(movies, f, indent=4)
+    # movie_providers = tmdb_connector.get_movie_providers(1138194)
+    # print(movie_providers)
+    # with open("movie_providers.json", "w") as f:
+    #     json.dump(movie_providers, f, indent=4)

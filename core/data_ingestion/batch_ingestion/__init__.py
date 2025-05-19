@@ -1,0 +1,4 @@
+from core.data_ingestion.batch_ingestion.tmdb_connector import TMDbConnector
+from core.data_ingestion.batch_ingestion.trakt_connector import TraktConnector
+from core.data_ingestion.batch_ingestion.omdb_connector import OMDBConnector
+from core.data_ingestion.batch_ingestion.youtube_connector import YouTubeConnector

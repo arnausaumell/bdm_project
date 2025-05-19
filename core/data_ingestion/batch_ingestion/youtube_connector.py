@@ -3,6 +3,7 @@ from typing import Optional, Dict, List
 import dotenv
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from loguru import logger
 
 dotenv.load_dotenv()
 
@@ -56,10 +57,18 @@ class YouTubeConnector:
 
             if stats_response.get("items"):
                 return stats_response["items"][0]["statistics"]
-            return None
+            return {
+                "viewCount": 0,
+                "likeCount": 0,
+                "commentCount": 0,
+            }
         except HttpError as e:
-            print(f"An error occurred: {e}")
-            return None
+            logger.error(f"An error occurred: {e}")
+            return {
+                "viewCount": 0,
+                "likeCount": 0,
+                "commentCount": 0,
+            }
 
     def _get_video_comments(self, video_id: str, max_results: int = 100) -> List[Dict]:
         """
@@ -101,16 +110,6 @@ if __name__ == "__main__":
     import json
 
     youtube_connector = YouTubeConnector()
-
-    # Example usage
-    movie_title = "Oppenheimer"
-
-    # Find the trailer
-    video_id = youtube_connector.search_movie_trailer(movie_title)
-    if video_id:
-        print(f"Found trailer: https://youtube.com/watch?v={video_id}")
-
-        # Get statistics
-        stats = youtube_connector.get_video_info(video_id)
-        print("\nVideo Statistics:")
-        print(json.dumps(stats, indent=2))
+    stats = youtube_connector.get_video_info("jpWUOxRozZg")
+    with open("movie_yt_stats.json", "w") as f:
+        json.dump(stats, f, indent=4)

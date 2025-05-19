@@ -17,10 +17,10 @@ ENV PATH=$PATH:$JAVA_HOME/bin
 
 # Copy requirements files
 COPY requirements/base.txt requirements/base.txt
-COPY requirements/batch_ingestion.txt requirements/batch_ingestion.txt
+COPY requirements/orchestration.txt requirements/orchestration.txt
 
 # Install dependencies
-RUN pip install -r requirements/batch_ingestion.txt
+RUN pip install -r requirements/orchestration.txt
 
 # Copy the entire project
 COPY . .
