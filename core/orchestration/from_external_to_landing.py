@@ -21,7 +21,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-N_DAYS_AGO = 5
+N_DAYS_AGO = 7
 REGION = "ES"
 
 
@@ -206,90 +206,94 @@ def update_youtube_stats(
         raise
 
 
-@flow(name="update-movie-data")
+@flow(name="from-external-to-landing")
 def update_movie_data(n_days_ago: int = N_DAYS_AGO):
     """Update movie data in Delta Lake tables"""
 
     logger.info("Starting update_movie_data flow")
 
-    # Test environment first
-    test_environment()
+    try:
+        # Test environment first
+        test_environment()
 
-    # Initialize connectors
-    logger.info("Initializing connectors")
-    tmdb_connector = TMDbConnector(region=REGION)
-    trakt_connector = TraktConnector()
-    omdb_connector = OMDBConnector()
-    youtube_connector = YouTubeConnector()
+        # Initialize connectors
+        logger.info("Initializing connectors")
+        tmdb_connector = TMDbConnector(region=REGION)
+        trakt_connector = TraktConnector()
+        omdb_connector = OMDBConnector()
+        youtube_connector = YouTubeConnector()
 
-    logger.info("Initializing DeltaLakeManager")
-    landing_delta_lake_manager = DeltaLakeManager(
-        s3_bucket_name="bdm-movies-db-landing",
-    )
+        logger.info("Initializing DeltaLakeManager")
+        landing_delta_lake_manager = DeltaLakeManager(
+            s3_bucket_name="bdm-movies-db-landing",
+        )
 
-    # Get new releases and their Trakt details
-    tmdb_released_movies = get_daily_releases(
-        tmdb_connector=tmdb_connector,
-        delta_lake_manager=landing_delta_lake_manager,
-        n_days_ago=n_days_ago,
-    )
+        # Get new releases and their Trakt details
+        tmdb_released_movies = get_daily_releases(
+            tmdb_connector=tmdb_connector,
+            delta_lake_manager=landing_delta_lake_manager,
+            n_days_ago=n_days_ago,
+        )
 
-    # Get trakt details
-    _ = get_trakt_details(
-        released_movies=tmdb_released_movies,
-        trakt_connector=trakt_connector,
-        delta_lake_manager=landing_delta_lake_manager,
-    )
+        # Get trakt details
+        _ = get_trakt_details(
+            released_movies=tmdb_released_movies,
+            trakt_connector=trakt_connector,
+            delta_lake_manager=landing_delta_lake_manager,
+        )
 
-    # Update ratings, providers, and YouTube stats
-    all_movies_df = landing_delta_lake_manager.read_table(
-        table_path="trakt/movie_ids_and_trailer"
-    )
-    all_movies = all_movies_df.toPandas().to_dict(orient="records")
+        # Update ratings, providers, and YouTube stats
+        all_movies_df = landing_delta_lake_manager.read_table(
+            table_path="trakt/movie_ids_and_trailer"
+        )
+        all_movies = all_movies_df.toPandas().to_dict(orient="records")
 
-    # Update ratings
-    update_movie_ratings(
-        all_movies=all_movies,
-        delta_lake_manager=landing_delta_lake_manager,
-        omdb_connector=omdb_connector,
-    )
+        # Update ratings
+        update_movie_ratings(
+            all_movies=all_movies,
+            delta_lake_manager=landing_delta_lake_manager,
+            omdb_connector=omdb_connector,
+        )
 
-    # Update providers
-    update_providers(
-        all_movies=all_movies,
-        tmdb_connector=tmdb_connector,
-        delta_lake_manager=landing_delta_lake_manager,
-    )
+        # Update providers
+        update_providers(
+            all_movies=all_movies,
+            tmdb_connector=tmdb_connector,
+            delta_lake_manager=landing_delta_lake_manager,
+        )
 
-    # Update YouTube stats
-    update_youtube_stats(
-        all_movies=all_movies,
-        youtube_connector=youtube_connector,
-        delta_lake_manager=landing_delta_lake_manager,
-    )
+        # Update YouTube stats
+        update_youtube_stats(
+            all_movies=all_movies,
+            youtube_connector=youtube_connector,
+            delta_lake_manager=landing_delta_lake_manager,
+        )
 
-    # Show tables
-    landing_delta_lake_manager.show_table("tmdb/movies_released")
-    landing_delta_lake_manager.show_table("trakt/movie_ids_and_trailer")
-    landing_delta_lake_manager.show_table("omdb/movie_ratings")
-    landing_delta_lake_manager.show_table("tmdb/movies_providers")
-    landing_delta_lake_manager.show_table("youtube/trailer_video_stats")
+        # Show tables
+        landing_delta_lake_manager.show_table("tmdb/movies_released")
+        landing_delta_lake_manager.show_table("trakt/movie_ids_and_trailer")
+        landing_delta_lake_manager.show_table("omdb/movie_ratings")
+        landing_delta_lake_manager.show_table("tmdb/movies_providers")
+        landing_delta_lake_manager.show_table("youtube/trailer_video_stats")
+
+    except Exception as e:
+        logger.error(f"Error in update_movie_data flow: {e}")
+        raise
 
 
 if __name__ == "__main__":
-    update_movie_data()
-    # from prefect.docker import DockerImage
+    from prefect.docker import DockerImage
 
-    # logger.info("Creating deployment")
-    # deployment = update_movie_data.deploy(
-    #     name="from",
-    #     work_pool_name="my-docker-pool",
-    #     cron="0 0 * * *",
-    #     image=DockerImage(
-    #         name="arnausau11/orchestration",
-    #         tag="latest",
-    #         dockerfile="core/orchestration/Dockerfile",
-    #     ),
-    #     push=True,
-    # )
-    # logger.info("Deployment created")
+    logger.info("Creating deployment")
+    deployment = update_movie_data.deploy(
+        name="from-external-to-landing",
+        work_pool_name="my-docker-pool",
+        cron="0 0 * * *",
+        image=DockerImage(
+            name="arnausau11/orchestration",
+            tag="latest",
+            dockerfile="core/orchestration/Dockerfile",
+        ),
+        push=True,
+    )
+    logger.info("Deployment created")

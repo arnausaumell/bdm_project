@@ -83,6 +83,12 @@ class DeltaLakeManager:
             table_path: S3 path to the existing Delta Lake table
             merge_key: Column name to use as merge key
         """
+        if (isinstance(data, pd.DataFrame) and len(data) == 0) or (
+            isinstance(data, pyspark.sql.DataFrame) and data.count() == 0
+        ):
+            logger.info(f"No data to upsert to {table_path}")
+            return
+
         s3_path = f"s3a://{self.s3_manager.bucket_name}/{table_path}"
         if not self.s3_manager.folder_exists(table_path):
             logger.info(f"Table does not exist at {s3_path}. Creating new table.")
