@@ -31,7 +31,7 @@ RUN touch ./core/__init__.py \
     && touch ./core/data_ingestion/__init__.py \
     && touch ./core/data_ingestion/batch_ingestion/__init__.py \
     && touch ./core/data_ingestion/streaming_ingestion/__init__.py \
-    && touch ./core/landing_zone/__init__.py
+    && touch ./core/landing_and_trusted_zone/__init__.py
 
 # Set Python path to include the app directory
 ENV PYTHONPATH=/app
