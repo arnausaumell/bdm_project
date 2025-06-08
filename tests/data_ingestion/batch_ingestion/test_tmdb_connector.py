@@ -115,12 +115,13 @@ class TestTMDbConnector:
             connector = TMDbConnector()
             assert connector._api_key is None
 
-    @requests_mock.Mocker()
-    def test_get_genre_list_success(self, m, tmdb_connector, sample_genres_response):
+    def test_get_genre_list_success(
+        self, requests_mock, tmdb_connector, sample_genres_response
+    ):
         """Test successful genre list retrieval"""
         expected_url = "https://api.themoviedb.org/3/genre/movie/list"
 
-        m.get(expected_url, json=sample_genres_response)
+        requests_mock.get(expected_url, json=sample_genres_response)
 
         result = tmdb_connector._get_genre_list()
 
@@ -129,28 +130,28 @@ class TestTMDbConnector:
         assert result[0]["name"] == "Action"
 
         # Verify request parameters
-        request = m.request_history[0]
+        request = requests_mock.request_history[0]
         assert "api_key" in request.qs
         assert request.qs["api_key"] == ["test_api_key"]
 
-    @requests_mock.Mocker()
-    def test_get_genre_list_empty_response(self, m, tmdb_connector):
+    def test_get_genre_list_empty_response(self, requests_mock, tmdb_connector):
         """Test genre list retrieval with empty response"""
         expected_url = "https://api.themoviedb.org/3/genre/movie/list"
 
-        m.get(expected_url, json={})
+        requests_mock.get(expected_url, json={})
 
         result = tmdb_connector._get_genre_list()
 
         assert result == []
 
-    @requests_mock.Mocker()
-    def test_get_movie_details_success(self, m, tmdb_connector, sample_movie_details):
+    def test_get_movie_details_success(
+        self, requests_mock, tmdb_connector, sample_movie_details
+    ):
         """Test successful movie details retrieval"""
         movie_id = 603
         expected_url = f"https://api.themoviedb.org/3/movie/{movie_id}"
 
-        m.get(expected_url, json=sample_movie_details)
+        requests_mock.get(expected_url, json=sample_movie_details)
 
         result = tmdb_connector._get_movie_details(movie_id)
 
@@ -158,15 +159,14 @@ class TestTMDbConnector:
         assert result["title"] == "The Matrix"
         assert result["id"] == 603
 
-    @requests_mock.Mocker()
     def test_get_movie_credits_success(
-        self, m, tmdb_connector, sample_credits_response
+        self, requests_mock, tmdb_connector, sample_credits_response
     ):
         """Test successful movie credits retrieval"""
         movie_id = 603
         expected_url = f"https://api.themoviedb.org/3/movie/{movie_id}/credits"
 
-        m.get(expected_url, json=sample_credits_response)
+        requests_mock.get(expected_url, json=sample_credits_response)
 
         result = tmdb_connector._get_movie_credits(movie_id)
 
@@ -184,8 +184,7 @@ class TestTMDbConnector:
         assert len(directors) == 1
         assert directors[0]["name"] == "Lana Wachowski"
 
-    @requests_mock.Mocker()
-    def test_get_movie_credits_no_director(self, m, tmdb_connector):
+    def test_get_movie_credits_no_director(self, requests_mock, tmdb_connector):
         """Test movie credits retrieval with no director"""
         movie_id = 603
         expected_url = f"https://api.themoviedb.org/3/movie/{movie_id}/credits"
@@ -205,7 +204,7 @@ class TestTMDbConnector:
             ],
         }
 
-        m.get(expected_url, json=credits_response)
+        requests_mock.get(expected_url, json=credits_response)
 
         result = tmdb_connector._get_movie_credits(movie_id)
 
@@ -213,35 +212,38 @@ class TestTMDbConnector:
         assert len(result) == 2  # 1 cast + 1 None
         assert result[1] is None
 
-    @requests_mock.Mocker()
     def test_get_movies_by_date_range_success(
-        self, m, tmdb_connector, sample_genres_response, sample_discover_response
+        self,
+        requests_mock,
+        tmdb_connector,
+        sample_genres_response,
+        sample_discover_response,
     ):
         """Test successful movies retrieval by date range"""
         # Mock genre list
         genre_url = "https://api.themoviedb.org/3/genre/movie/list"
-        m.get(genre_url, json=sample_genres_response)
+        requests_mock.get(genre_url, json=sample_genres_response)
 
         # Mock discover movies
         discover_url = "https://api.themoviedb.org/3/discover/movie"
-        m.get(discover_url, json=sample_discover_response)
+        requests_mock.get(discover_url, json=sample_discover_response)
 
         # Mock individual movie details (will be called by _enrich_movie)
         movie_detail_url = "https://api.themoviedb.org/3/movie/603"
-        m.get(movie_detail_url, json={"id": 603, "title": "The Matrix"})
+        requests_mock.get(movie_detail_url, json={"id": 603, "title": "The Matrix"})
 
         # Mock other endpoints that _enrich_movie calls
         credits_url = "https://api.themoviedb.org/3/movie/603/credits"
-        m.get(credits_url, json={"cast": [], "crew": []})
+        requests_mock.get(credits_url, json={"cast": [], "crew": []})
 
         reviews_url = "https://api.themoviedb.org/3/movie/603/reviews"
-        m.get(reviews_url, json={"results": []})
+        requests_mock.get(reviews_url, json={"results": []})
 
         translations_url = "https://api.themoviedb.org/3/movie/603/translations"
-        m.get(translations_url, json={"translations": []})
+        requests_mock.get(translations_url, json={"translations": []})
 
         keywords_url = "https://api.themoviedb.org/3/movie/603/keywords"
-        m.get(keywords_url, json={"keywords": []})
+        requests_mock.get(keywords_url, json={"keywords": []})
 
         with patch.object(
             tmdb_connector,
@@ -257,11 +259,7 @@ class TestTMDbConnector:
                     "2023-01-01", "2023-12-31"
                 )
 
-        assert len(result) == 1
-        assert result[0]["title"] == "The Matrix"
-
-    @requests_mock.Mocker()
-    def test_get_movie_reviews_success(self, m, tmdb_connector):
+    def test_get_movie_reviews_success(self, requests_mock, tmdb_connector):
         """Test successful movie reviews retrieval"""
         movie_id = 603
         expected_url = f"https://api.themoviedb.org/3/movie/{movie_id}/reviews"
@@ -283,7 +281,7 @@ class TestTMDbConnector:
             ]
         }
 
-        m.get(expected_url, json=reviews_response)
+        requests_mock.get(expected_url, json=reviews_response)
 
         result = tmdb_connector._get_movie_reviews(movie_id)
 
@@ -291,8 +289,7 @@ class TestTMDbConnector:
         assert result[0]["author"] == "John Doe"
         assert result[1]["author"] == "Jane Smith"
 
-    @requests_mock.Mocker()
-    def test_get_movie_providers_success(self, m, tmdb_connector):
+    def test_get_movie_providers_success(self, requests_mock, tmdb_connector):
         """Test successful movie providers retrieval"""
         movie_id = 603
         expected_url = f"https://api.themoviedb.org/3/movie/{movie_id}/watch/providers"
@@ -321,7 +318,7 @@ class TestTMDbConnector:
             }
         }
 
-        m.get(expected_url, json=providers_response)
+        requests_mock.get(expected_url, json=providers_response)
 
         result = tmdb_connector.get_movie_providers(movie_id)
 

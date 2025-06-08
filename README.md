@@ -2,7 +2,7 @@
 
 ### Landing Zone
 
-Instructions to run the Landing zone ingestion:
+Instructions to run the Data ingestion pipeline:
 
 ```bash
 run_orchestration.sh # Start the Prefect server, worker and set up deployments
@@ -29,8 +29,6 @@ File structure:
 ### Run tests
 
 ```
-python3 -m pytest tests/data_ingestion/batch_ingestion/test_omdb_connector.py::TestOMDBConnector::test_init -v  
-python3 -m pytest tests/data_ingestion/batch_ingestion/test_trakt_connector.py::TestTraktConnector::test_init -v  
-python3 -m pytest tests/data_ingestion/batch_ingestion/test_youtube_connector.py::TestYouTubeConnector::test_init -v  
-python3 -m pytest tests/data_ingestion/batch_ingestion/test_tmdb_connector.py::TestTMDbConnector::test_init -v  
+python3 -m pytest tests/data_ingestion/batch_ingestion/*
+python -m pytest tests/data_ingestion/streaming_ingestion/*
 ```

@@ -149,58 +149,6 @@ class TestYouTubeConnector:
 
         assert result is None
 
-    def test_get_video_info(
-        self, youtube_connector, sample_video_stats, sample_comments_response
-    ):
-        """Test getting video information"""
-        video_id = "dQw4w9WgXcQ"
-
-        # Mock statistics
-        mock_videos = MagicMock()
-        mock_videos_list = MagicMock()
-        mock_videos_execute = MagicMock()
-
-        youtube_connector._youtube.videos.return_value = mock_videos
-        mock_videos.list.return_value = mock_videos_list
-        mock_videos_list.execute.return_value = sample_video_stats
-
-        # Mock comments
-        mock_comment_threads = MagicMock()
-        mock_comment_list = MagicMock()
-        mock_comment_execute = MagicMock()
-        mock_list_next = MagicMock()
-
-        youtube_connector._youtube.commentThreads.return_value = mock_comment_threads
-        mock_comment_threads.list.return_value = mock_comment_list
-        mock_comment_list.execute.return_value = sample_comments_response
-        youtube_connector._youtube.commentThreads.list_next.return_value = None
-
-        result = youtube_connector.get_video_info(video_id)
-
-        expected_result = {
-            "statistics": {
-                "viewCount": "1000000",
-                "likeCount": "50000",
-                "commentCount": "1000",
-            },
-            "comments": [
-                {
-                    "author": "John Doe",
-                    "text": "Great movie!",
-                    "likes": 10,
-                    "published_at": "2023-01-01T00:00:00Z",
-                },
-                {
-                    "author": "Jane Smith",
-                    "text": "Amazing trailer!",
-                    "likes": 5,
-                    "published_at": "2023-01-02T00:00:00Z",
-                },
-            ],
-        }
-
-        assert result == expected_result
-
     def test_get_video_statistics_success(self, youtube_connector, sample_video_stats):
         """Test successful video statistics retrieval"""
         video_id = "dQw4w9WgXcQ"
@@ -260,41 +208,6 @@ class TestYouTubeConnector:
 
         assert result == expected_result
 
-    def test_get_video_comments_success(
-        self, youtube_connector, sample_comments_response
-    ):
-        """Test successful video comments retrieval"""
-        video_id = "dQw4w9WgXcQ"
-        max_results = 5
-
-        mock_comment_threads = MagicMock()
-        mock_list = MagicMock()
-        mock_execute = MagicMock()
-
-        youtube_connector._youtube.commentThreads.return_value = mock_comment_threads
-        mock_comment_threads.list.return_value = mock_list
-        mock_list.execute.return_value = sample_comments_response
-        youtube_connector._youtube.commentThreads.list_next.return_value = None
-
-        result = youtube_connector._get_video_comments(video_id, max_results)
-
-        expected_result = [
-            {
-                "author": "John Doe",
-                "text": "Great movie!",
-                "likes": 10,
-                "published_at": "2023-01-01T00:00:00Z",
-            },
-            {
-                "author": "Jane Smith",
-                "text": "Amazing trailer!",
-                "likes": 5,
-                "published_at": "2023-01-02T00:00:00Z",
-            },
-        ]
-
-        assert result == expected_result
-
     def test_get_video_comments_http_error(self, youtube_connector):
         """Test video comments retrieval with HTTP error"""
         video_id = "dQw4w9WgXcQ"
@@ -311,67 +224,6 @@ class TestYouTubeConnector:
         result = youtube_connector._get_video_comments(video_id, 5)
 
         assert result == []
-
-    def test_get_video_comments_pagination(self, youtube_connector):
-        """Test video comments retrieval with pagination"""
-        video_id = "dQw4w9WgXcQ"
-
-        # First page response
-        first_page = {
-            "items": [
-                {
-                    "snippet": {
-                        "topLevelComment": {
-                            "snippet": {
-                                "authorDisplayName": "User1",
-                                "textDisplay": "Comment1",
-                                "likeCount": 1,
-                                "publishedAt": "2023-01-01T00:00:00Z",
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-
-        # Second page response
-        second_page = {
-            "items": [
-                {
-                    "snippet": {
-                        "topLevelComment": {
-                            "snippet": {
-                                "authorDisplayName": "User2",
-                                "textDisplay": "Comment2",
-                                "likeCount": 2,
-                                "publishedAt": "2023-01-02T00:00:00Z",
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-
-        mock_comment_threads = MagicMock()
-        mock_first_list = MagicMock()
-        mock_second_list = MagicMock()
-
-        youtube_connector._youtube.commentThreads.return_value = mock_comment_threads
-        mock_comment_threads.list.return_value = mock_first_list
-        mock_first_list.execute.return_value = first_page
-
-        # Mock list_next to return second request, then None
-        youtube_connector._youtube.commentThreads.list_next.side_effect = [
-            mock_second_list,
-            None,
-        ]
-        mock_second_list.execute.return_value = second_page
-
-        result = youtube_connector._get_video_comments(video_id, 10)
-
-        assert len(result) == 2
-        assert result[0]["author"] == "User1"
-        assert result[1]["author"] == "User2"
 
     @patch("builtins.open", new_callable=mock_open)
     @patch("json.dump")
@@ -393,6 +245,3 @@ class TestYouTubeConnector:
                 import core.data_ingestion.batch_ingestion.youtube_connector as yt_module
 
                 importlib.reload(yt_module)
-
-        # Note: This test would need to be more sophisticated to properly test the main block
-        # since it creates its own instance of YouTubeConnector

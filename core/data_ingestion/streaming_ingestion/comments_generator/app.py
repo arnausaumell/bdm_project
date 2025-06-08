@@ -10,7 +10,9 @@ from loguru import logger
 from dotenv import load_dotenv
 from asyncio import Task
 
-from fake_comments import COMMENTS
+from core.data_ingestion.streaming_ingestion.comments_generator.fake_comments import (
+    COMMENTS,
+)
 
 load_dotenv()
 
